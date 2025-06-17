@@ -2,13 +2,8 @@ import { useState } from "react";
 import Input from "./Input";
 import Button from "./Button";
 import DisplayArticle from "./DisplayArticle";
-export default function GeneralInfo({send}) {
-    const [person, setPerson]= useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-    })
+export default function GeneralInfo({person, setPerson, send}) {
+    
     const [isEdit, setIsEdit]=useState(false)
     
     function handleInput(e) {
@@ -32,7 +27,8 @@ export default function GeneralInfo({send}) {
     }
     return (
         <div>
-            <form id="generalInfo" action=''>
+            <form id="generalInfo">
+                <h2>Personal Info</h2>
                 {!isEdit&&
                 <>
                     <DisplayArticle
@@ -89,7 +85,10 @@ export default function GeneralInfo({send}) {
                 <Button onClick={edit}>
                     Edit
                 </Button>
-                <Button type='submit' onClick={send}>
+                <Button type='submit' onClick={(e)=>{
+                    send(e)
+                    setIsEdit(false)
+                }}>
                     Submit
                 </Button>
             </form>
