@@ -1,6 +1,6 @@
 .displayArticle {
     display: flex;
     gap: 12px;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 }

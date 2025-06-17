@@ -1,7 +1,7 @@
 
 import Input from "./components/Input";
 import Button from "./components/Button";
-export default function EduForm({info, setInfo, addItem}) {    
+export default function ExpForm({info, setInfo, addItem}) {    
     function handleChange(e) {
         e.target.name==='start'&&setInfo({
             ...info, startDate: e.target.value
@@ -9,18 +9,21 @@ export default function EduForm({info, setInfo, addItem}) {
         e.target.name==='end'&&setInfo({
             ...info, endDate: e.target.value
         });
-        e.target.name==='school'&&setInfo({
-            ...info, schoolName: e.target.value
+        e.target.name==='companyName'&&setInfo({
+            ...info, company: e.target.value
         });
-        e.target.name==='course'&&setInfo({
-            ...info, courseName: e.target.value
+        e.target.name==='jobTitle'&&setInfo({
+            ...info, jobTitle: e.target.value
+        });
+        e.target.name==='description'&&setInfo({
+            ...info, description: e.target.value
         });
     }
  return (
     <form id="edu">
-        <h2>Education</h2>
+        <h2>Experience</h2>
         <label htmlFor="start">
-            Start Date
+            From
             <Input
             name='start'
             value= {info.startDate}
@@ -28,27 +31,36 @@ export default function EduForm({info, setInfo, addItem}) {
             type='date'/>
         </label>
         <label htmlFor="end">
-            Graduation Date
+            Until
             <Input
             name='end'
             value= {info.endDate}
             func={handleChange}
             type='date'/>
         </label>
-        <label htmlFor="school">
-            School / University
+        <label htmlFor="companyName">
+            Company Name
             <Input
-            name='school'
-            value= {info.schoolName}
+            name='companyName'
+            value= {info.company}
             func={handleChange}
             />
         </label>
-        <label htmlFor="course">
-            Course Name
+        <label htmlFor="jobTitle">
+            Job Title
             <Input
-            name='course'
-            value= {info.courseName}
+            name='jobTitle'
+            value= {info.jobTitle}
             func={handleChange}
+            />
+        </label>
+        <label htmlFor="description">
+            Description
+            <textarea
+            name='description'
+            value= {info.description}
+            onChange={handleChange}
+            
             />
         </label>
         <Button onClick={addItem} type='submit'>
